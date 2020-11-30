@@ -1,6 +1,3 @@
-# default shell
-SHELL = /bin/sh
-
 # name project
 TAG = dg
 
@@ -8,12 +5,13 @@ TAG = dg
 CC = g++
 
 # source parametres
-SRC  = ./main.cpp
-SRC += ./source/tools.cpp
+SRC  = main.cpp
+SRC += tools.cpp
 
 # flag parametres
 FLAG  = -Wall
 FLAG += -std=c++11
+FLAG += -stdlib=libc++
 
 # mode list
 .PHONY: release debug clean
@@ -25,7 +23,7 @@ release: ./build/release/$(TAG)
 	@echo "[RELEASE]"
 	@mkdir -p ./build/
 	@mkdir -p ./build/release/
-	@$(CC) $(FLAG) -I ./include/ $^ -o $@
+	@$(CC) $(FLAG) $^ -o $@
 
 # debug mode
 debug: ./build/debug/$(TAG)
@@ -34,7 +32,7 @@ debug: ./build/debug/$(TAG)
 	@echo "[DEBUG]"
 	@mkdir -p ./build/
 	@mkdir -p ./build/debug/
-	@$(CC) $(FLAG) -g -I ./include/ $^ -o $@
+	@$(CC) $(FLAG) -g $^ -o $@
 
 # clean mode
 clean:
