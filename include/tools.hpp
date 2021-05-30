@@ -19,6 +19,9 @@ std::vector<std::string> split(std::string, char);
 /* put the vector in order */
 std::vector<std::string> analyzer(std::vector<std::string>);
 
+/* write/append mode file */
+std::ofstream mode(std::string);
+
 /* generate combinations and write them to a file */
 void generate_dictionary(int, int, std::vector<std::string>,
-	std::string, std::function<void(unsigned int, unsigned int)>);
+	std::ofstream &, std::function<void(unsigned int, unsigned int)>);
